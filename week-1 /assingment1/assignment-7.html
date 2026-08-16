@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      body{
+        margin: 0px;
+        padding: 0px;
+      }
+
+      #header{
+       color: white;
+       background-color: black;
+       height: 75px;
+       width: 100vw;
+       padding: 0 20px;
+      }
+      
+      .flexed{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .headerElement img{
+        height: 30px;
+        width: auto;
+        
+      }
+      .headerElement{
+        padding: 19px 15px 15px 36px;
+      }
+      .headerElement img{
+        padding-right: 10px;
+      }
+      .headerElement 
+      
+      
+    </style>
+</head>
+<body>
+    <div id="header" class="flexed">
+        <div class="headerElement flexed" >
+            <img src="vscode.png" alt="">
+            <tool>Visual Studio Code</tool>
+        </div>
+        <div class="navtab flexed">
+        <div class="headerElement"><label for="choise">Features</label>
+
+<select name="cars" id="choise"> 
+  <option value="volvo"></option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option> 
+</select></div>
+        <div class="headerElement">Docs</div>
+        <div class="headerElement">Updates</div>
+        <div class="headerElement">Blog</div>
+        <div class="headerElement">Extensions</div>
+        <div class="headerElement">MCP</div>
+        <div class="headerElement">FAQ</div>
+        <div class="headerElement">Learn</div>
+        <div class="headerElement">Events</div>
+        </div>
+
+        <div id="navAction" class="flexed">
+        <div class="headerElement">search</div>
+        <div class="headerElement">dark</div>
+        <div class="headerElement"><button>download</button></div>
+      </div>
+        
+    </div>
+</body>
+</html>

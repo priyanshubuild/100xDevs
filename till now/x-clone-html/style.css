@@ -1,0 +1,586 @@
+:root {
+    --color-black: #000000;
+    --color-dark-gray: #16181c;
+    --color-light-gray: #2f3336;
+    --color-text-main: #e7e9ea;
+    --color-text-dim: #71767b;
+    --color-blue: #1d9bf0;
+    --color-blue-hover: #1a8cd8;
+    --color-white: #ffffff;
+    --color-hover-bg: rgba(231, 233, 234, 0.1);
+    --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --border-color: #2f3336;
+    --nav-width: 275px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-black);
+    color: var(--color-text-main);
+    font-family: var(--font-main);
+    font-size: 15px;
+    line-height: 1.4;
+    overflow-y: scroll;
+    /* Force scrollbar to prevent layout shift */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    color: inherit;
+}
+
+input {
+    font-family: inherit;
+}
+
+/* Layout */
+.container {
+    display: grid;
+    grid-template-columns: var(--nav-width) 600px 350px;
+    gap: 0;
+    max-width: 1265px;
+    margin: 0 auto;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    padding: 0 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: auto;
+}
+
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-bottom: 20px;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+    margin: 2px 0;
+}
+
+.logo-link:hover {
+    background-color: var(--color-hover-bg);
+}
+
+.nav-links {
+    margin-top: 2px;
+    margin-bottom: 16px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    font-size: 20px;
+    border-radius: 9999px;
+    transition: background-color 0.2s;
+    width: fit-content;
+    margin-bottom: 8px;
+    color: var(--color-text-main);
+}
+
+.nav-item:hover {
+    background-color: var(--color-hover-bg);
+}
+
+.nav-item.active {
+    font-weight: 700;
+}
+
+.nav-item .icon-container {
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.tweet-btn {
+    margin-top: 8px;
+    width: 90%;
+    padding: 14px 0;
+}
+
+.user-profile {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-radius: 9999px;
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+
+.user-profile:hover {
+    background-color: var(--color-hover-bg);
+}
+
+.user-profile .avatar {
+    margin-right: 12px;
+}
+
+.user-profile .user-info {
+    flex: 1;
+    overflow: hidden;
+}
+
+.user-profile .name {
+    font-weight: 700;
+    display: block;
+}
+
+.user-profile .username {
+    color: var(--color-text-dim);
+}
+
+/* Feed */
+.feed {
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    max-width: 600px;
+}
+
+.feed-header {
+    position: sticky;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    z-index: 100;
+}
+
+.feed-header .tab {
+    flex: 1;
+    height: 53px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    color: var(--color-text-dim);
+    transition: background-color 0.2s;
+    cursor: pointer;
+    position: relative;
+    font-size: 15px;
+}
+
+.feed-header .tab:hover {
+    background-color: var(--color-hover-bg);
+}
+
+.feed-header .tab.active {
+    color: var(--color-text-main);
+    font-weight: 700;
+}
+
+.feed-header .tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 56px;
+    height: 4px;
+    background-color: var(--color-blue);
+    border-radius: 2px;
+}
+
+/* Tweet Input */
+.tweet-input-area {
+    padding: 16px;
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tweet-input-area .avatar {
+    margin-right: 12px;
+}
+
+.tweet-input-area .input-container {
+    flex: 1;
+}
+
+.tweet-input-area input {
+    width: 100%;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: var(--color-text-main);
+    padding: 12px 0;
+    outline: none;
+}
+
+.tweet-input-area .input-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    border-top: 1px solid var(--color-light-gray);
+    /* Subtle divider if needed */
+    padding-top: 12px;
+    border-top: none;
+    /* Removing border as per X design */
+}
+
+.media-icons {
+    display: flex;
+    gap: 0px;
+}
+
+.media-icon {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--color-blue);
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.media-icon:hover {
+    background-color: rgba(29, 155, 240, 0.1);
+}
+
+.btn-small {
+    padding: 0 16px;
+    height: 36px;
+    font-size: 15px;
+    width: auto;
+}
+
+/* Tweets */
+.tweet {
+    padding: 12px 16px;
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.tweet:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.tweet .avatar {
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.tweet-content {
+    flex: 1;
+}
+
+.tweet-meta {
+    margin-bottom: 2px;
+    display: flex;
+    gap: 4px;
+    font-size: 15px;
+}
+
+.tweet-meta .name {
+    font-weight: 700;
+    color: var(--color-text-main);
+}
+
+.tweet-meta .username,
+.tweet-meta .time {
+    color: var(--color-text-dim);
+}
+
+.tweet-text {
+    font-size: 15px;
+    margin-bottom: 12px;
+    white-space: pre-wrap;
+}
+
+.tweet-actions {
+    display: flex;
+    justify-content: space-between;
+    max-width: 425px;
+    color: var(--color-text-dim);
+    font-size: 13px;
+}
+
+.action {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+    cursor: pointer;
+}
+
+.action:hover {
+    color: var(--color-blue);
+    /* Simplified hover color */
+}
+
+/* Widgets */
+.widgets-section {
+    padding: 12px 0 12px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.search-bar {
+    position: sticky;
+    top: 0;
+    background-color: var(--color-black);
+    padding-bottom: 8px;
+    z-index: 10;
+}
+
+.search-bar input {
+    width: 100%;
+    background-color: #202327;
+    border: 1px solid transparent;
+    /* default */
+    border-radius: 9999px;
+    padding: 12px 20px;
+    color: var(--color-text-main);
+    font-size: 15px;
+}
+
+.search-bar input:focus {
+    background-color: var(--color-black);
+    border-color: var(--color-blue);
+    outline: none;
+}
+
+.widget-box {
+    background-color: var(--color-dark-gray);
+    border-radius: 16px;
+    padding: 12px 0;
+}
+
+.widget-box h3 {
+    font-size: 20px;
+    font-weight: 800;
+    padding: 0 16px 12px;
+}
+
+.trend-item {
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.trend-item:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.trend-meta {
+    font-size: 13px;
+    color: var(--color-text-dim);
+    margin-bottom: 2px;
+}
+
+.trend-name {
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.trend-posts {
+    font-size: 13px;
+    color: var(--color-text-dim);
+}
+
+.follow-item {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.follow-item:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.follow-item .avatar {
+    margin-right: 12px;
+}
+
+.follow-item .user-info {
+    flex: 1;
+    overflow: hidden;
+}
+
+.follow-item .name {
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.follow-item .username {
+    color: var(--color-text-dim);
+    font-size: 15px;
+}
+
+.follow-btn {
+    background-color: var(--color-white);
+    color: var(--color-black);
+    font-weight: 700;
+    border-radius: 9999px;
+    padding: 6px 16px;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.follow-btn:hover {
+    background-color: #d7dbdc;
+}
+
+/* Utilities */
+.btn-primary {
+    background-color: var(--color-blue);
+    color: var(--color-white);
+    font-weight: 700;
+    border-radius: 9999px;
+    padding: 0 32px;
+    height: 52px;
+    font-size: 17px;
+    transition: background-color 0.2s;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-blue-hover);
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--color-light-gray);
+    object-fit: cover;
+}
+
+.icon {
+    width: 26.25px;
+    height: 26.25px;
+    fill: currentColor;
+}
+
+/* Responsive */
+@media (max-width: 1280px) {
+    .container {
+        grid-template-columns: 88px 600px 290px;
+    }
+
+    .sidebar-content {
+        align-items: center;
+    }
+
+    .nav-item span {
+        display: none;
+    }
+
+    .tweet-btn {
+        width: 50px;
+        height: 50px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
+
+    .tweet-btn::before {
+        content: '+';
+        /* Placeholder for feather icon if needed */
+        font-size: 24px;
+        line-height: 1;
+    }
+
+    .tweet-btn {
+        font-size: 0;
+        /* Hide text */
+    }
+
+    .user-profile {
+        width: 50px;
+        height: 50px;
+        padding: 0;
+        justify-content: center;
+    }
+
+    .user-profile .avatar {
+        margin: 0;
+    }
+
+    .user-profile .user-info {
+        display: none;
+    }
+
+    .nav-item .icon-container {
+        margin-right: 0;
+    }
+
+    .logo-link {
+        width: 50px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .container {
+        grid-template-columns: 88px 1fr 0;
+    }
+
+    .widgets-section {
+        display: none;
+    }
+
+    .feed {
+        border-right: none;
+    }
+}
+
+@media (max-width: 500px) {
+    .container {
+        grid-template-columns: 0 1fr 0;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .feed {
+        border-left: none;
+    }
+
+    /* Add a bottom nav for mobile would be ideal, but for now just hiding sidebar is responsive "enough" to not break, though bad UX. 
+       Prompt asked for clone, usually clone implies desktop/responsive. 
+    */
+}
