@@ -99,7 +99,7 @@ main();
 
 //write a promisified function that takes a file prefix as an input (a)
 // and cleans ({prefix}1.txt,{prefix}2.txt,{prefix}3.txt)
-
+/*
 
 function cleanManyFiles(prefix){
 
@@ -120,6 +120,17 @@ function cleanManyFiles(prefix){
 
 }
 
+*/
+
+//here is more better way to do the above thing
+
+async function cleanManyFiles(prefix){
+    await clearFile(prefix+"1.txt");
+    await clearFile(prefix+"2.txt");
+    await clearFile(prefix+"3.txt");
+
+    return resolve();;
+}
 cleanManyFiles("a")
 .then(function(){
     console.log("done all 3 files cleaning the fiel");
