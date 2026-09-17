@@ -35,8 +35,8 @@ program.command('countWord')
     });
   });
   
-  program.command('-h`')
-  .description('Count the number of words in a file')
+  program.command('-h')
+  .description('need help')
   .argument('<file>', 'file to count')
   .action((file) => {
     fs.readFile(file, 'utf8', (err, data) => {
@@ -51,3 +51,8 @@ program.command('countWord')
   
 
 program.parse();
+
+
+// to make it more cool we can run:
+// alias worldcli="node index.js"
+// worldcli -h
