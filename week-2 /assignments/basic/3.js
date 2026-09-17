@@ -4,6 +4,7 @@ let a={
     c:"z"
 };
 
+
 let b={};
 kexs=Object.keys(a);
 console.log(kexs);
